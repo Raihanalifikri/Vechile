@@ -14,7 +14,7 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        return view('vehicle.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        //
+        return view('Vehicle.create');
     }
 
     /**
@@ -35,7 +35,25 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi data
+        $this->validate($request,[
+            'name'=> 'required',
+            'color'=> 'required',
+            'wheel'=> 'required',
+            'machine'=> 'required',
+            'price'=> 'required'
+        ]);
+
+        // Masukin data ke data base
+        $vehicle = Vehicle::created([
+            'name'=> $request->name,
+            'color'=> $request->color,
+            'wheel'=> $request->wheel,
+            'machine'=> $request->machine,
+            'price'=> $request->price
+        ]);
+
+        return redirect()->route('vehicle.index');  
     }
 
     /**

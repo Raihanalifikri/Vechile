@@ -20,6 +20,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('vechicle', VehicleController::class);
+Route::resource('vehicle', VehicleController::class);
 
-Route::resource('admin',adminController::class);
