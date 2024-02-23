@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\VehicleContoller;
 use App\Http\Controllers\VehicleController;
 use App\Models\Vehicle;
 use Illuminate\Support\Facades\Route;
@@ -20,5 +21,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('vehicle', VehicleController::class);
+Route::resource('vehicle', VehicleContoller::class);
 

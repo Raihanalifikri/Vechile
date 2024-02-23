@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
-class VehicleController extends Controller
+class VehicleContoller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        return view('vehicle.index');
+        $vehicle = Vehicle::all();
+
+        return view('vehicle.index', compact('vehicle'));
     }
 
     /**
@@ -45,7 +47,7 @@ class VehicleController extends Controller
         ]);
 
         // Masukin data ke data base
-        $vehicle = Vehicle::created([
+        $vehicle = Vehicle::create([
             'name'=> $request->name,
             'color'=> $request->color,
             'wheel'=> $request->wheel,
@@ -59,10 +61,10 @@ class VehicleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Vehicle  $vehicle
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Vehicle $vehicle)
+    public function show($id)
     {
         //
     }
@@ -70,10 +72,10 @@ class VehicleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Vehicle  $vehicle
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vehicle $vehicle)
+    public function edit($id)
     {
         //
     }
@@ -82,10 +84,10 @@ class VehicleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Vehicle  $vehicle
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vehicle $vehicle)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -93,10 +95,10 @@ class VehicleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Vehicle  $vehicle
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vehicle $vehicle)
+    public function destroy($id)
     {
         //
     }
